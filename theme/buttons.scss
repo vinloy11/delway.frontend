@@ -1,0 +1,87 @@
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: inherit;
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  outline: none;
+  max-height: none;
+  margin: 0;
+  text-decoration: none;
+  transition: .1s;
+  font-weight: inherit;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 8px 16px;
+  font-size: inherit;
+  &:hover, &:focus {
+    background-color: #4C79CE;
+  }
+  &:active {
+    background-color: var(--light-blue);
+    border-color: var(--light-gray);
+    transform: scale(0.95);
+  }
+  &.big {
+    padding: 16px;
+    font-size: 14px;
+  }
+  &.default {
+    background-color: var(--white);
+    color: #3F4C67;
+    &:hover, &:focus {
+      background-color: #ecf5ff;
+    }
+    &:active {
+      color: #3a8ee6;
+    }
+  }
+  &.success {
+    background-color: var(--dark-green);
+    &:hover, &:focus {
+      background-color: var(--green);
+    }
+    &:active {
+      background-color: var(--light-green);
+    }
+  }
+  &.warning {
+    background-color: var(--dark-yellow);
+    &:hover, &:focus {
+      background-color: var(--yellow);
+    }
+    &:active {
+      background-color: var(--light-yellow);
+    }
+  }
+  &.danger {
+    background-color: var(--dark-red);
+    &:hover, &:focus {
+      background-color: var(--red);
+    }
+    &:active {
+      background-color: var(--light-red);
+    }
+  }
+  &.disabled, &:disabled,
+  &.disabled:hover, &:disabled:hover,
+  &.disabled:active, &:disabled:active {
+    background-color: var(--disabled);
+    transform: scale(1);
+    border-color: transparent;
+    color: var(--light-gray);
+  }
+
+}
+
+
