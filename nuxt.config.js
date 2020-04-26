@@ -29,6 +29,7 @@ module.exports = {
   ],
 
   plugins: [
+    '@/plugins/Vuelidate',
     // {src: '@/plugins/vuikit', ssr: false},
   ],
 

@@ -2,10 +2,10 @@
   <div class="modal-mask">
     <div @click="closeModal" class="modal-wrapper">
       <div class="modal-container">
-
+        <Icon @click="$emit('close')" name="x-icon" props="fill-gray"/>
         <div class="modal-header">
           <slot name="header">
-            default header
+
           </slot>
         </div>
 
@@ -17,10 +17,10 @@
 
         <div class="modal-footer">
           <slot name="footer">
-            default footer
-            <button class="modal-default-button" @click="$emit('close')">
-              OK
-            </button>
+<!--            default footer-->
+<!--            <button class="modal-default-button" @click="$emit('close')">-->
+<!--              OK-->
+<!--            </button>-->
           </slot>
         </div>
       </div>
@@ -29,17 +29,37 @@
 </template>
 
 <script>
+  import Icon from "./Icon";
   export default {
+    components: {
+      Icon
+    },
+
     data() {
       return {
         showModal: false
       }
     },
 
+    beforeMount() {
+      if (process.client) {
+        document.documentElement.addEventListener('keyup', this.closeModal);
+      }
+    },
+
+    beforeDestroy() {
+      if (process.client) {
+        document.documentElement.removeEventListener('keyup', this.closeModal);
+      }
+    },
+
     methods: {
       closeModal(e) {
-        console.log(e.target)
-        if (!e.target.classList.contains('modal-wrapper')) return;
+        if (e.type === 'click') {
+          if (!e.target.classList.contains('modal-wrapper')) return;
+        } else if (e.type === 'keyup') {
+          if (e.key !== 'Escape') return;
+        }
         this.$emit('close');
       }
     }
@@ -66,11 +86,12 @@
   }
 
   .modal-container {
+    position: relative;
     width: fit-content;
     margin: 0 auto;
-    padding: 20px 30px;
+    padding: 16px;
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
     overflow: hidden;
@@ -81,17 +102,16 @@
   }
 
   .modal-header h3 {
-    margin-top: 0;
-    color: #42b983;
+    /*margin-top: 0;*/
   }
 
   .modal-body {
-    margin: 20px 0;
+    /*margin: 20px 0;*/
   }
 
-  .modal-default-button {
-    float: right;
-  }
+  /*.modal-default-button {*/
+  /*  float: right;*/
+  /*}*/
 
   /*
    * The following styles are auto-applied to elements with
@@ -114,6 +134,12 @@
   .modal-leave-active .modal-container {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+  }
+
+  .x-icon {
+    position: absolute;
+    right: 16px;
+    top: 16px;
   }
 
 </style>

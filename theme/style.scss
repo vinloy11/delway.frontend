@@ -22,6 +22,7 @@
   --white: #FFFFFF;
   --black: #3F4C67;
   --background: #E5E5E5;
+  --border-color: #ECEFF7;
 }
 
 *, *:before, *:after {
@@ -36,6 +37,7 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   font-size: 14px;
+  line-height: 17px;
   background-color: var(--background);
   min-height: 100vh;
   font-weight: 600;
@@ -67,6 +69,25 @@ html {
       grid-column: span var(--span);
     }
 
+
+    h1 {
+      font-size: 24px;
+      line-height: 29px;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 22px;
+    }
+
+    h3 {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .text-normal {
+      font-weight: normal;
+    }
 
 
   }

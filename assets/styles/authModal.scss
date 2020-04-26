@@ -1,12 +1,34 @@
+.title {
+  line-height: 39px;
+  font-size: 32px;
+  color: var(--dark-blue);
+  padding-top: 32px;
+  text-align: center;
+}
+
+.additionally {
+  text-align: center;
+  display: block;
+  color: var(--gray);
+}
+
+.heading {
+  margin-top: 24px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.arrow {
+  position: absolute;
+  stroke: var(--gray);
+  fill: var(--gray);
+  transform: rotate(180deg);
+  top: 13px;
+  left: 16px;
+}
+
 form {
-  background: red;
-  position: fixed;
-  width: auto;
-  max-width: 400px;
-  max-height: 400px;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  .btn {
+    width: 100%;
+  }
 }

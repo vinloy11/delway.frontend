@@ -1,5 +1,5 @@
 <template>
-  <component ref="svg" :class="['icon', name, props]" :is="icon"/>
+  <component @click="$emit('click')" ref="svg" :class="['icon', name, props]" :is="icon"/>
 </template>
 
 <script>
@@ -26,9 +26,11 @@
 
 <style lang="scss" scoped>
   .icon {
+    cursor: pointer;
     width: 20px;
     height: 20px;
     stroke: var(--white);
+    fill: var(--white);
     stroke-width: 1.5px;
 
     &.right {
@@ -49,11 +51,38 @@
         fill: var(--black);
       }
 
-      &.arrow {
+      &.arrow.arrow {
         stroke: var(--white);
+        fill: var(--white);
         width: 15px;
         height: 13px;
       }
     }
+
+    &.x-icon {
+      cursor: pointer;
+      width: 12px;
+      height: 12px;
+    }
+
+    &.fill-gray {
+      fill: var(--icon-gray);
+      stroke: var(--icon-gray);
+    }
+
   }
+
+  a:hover > .icon.icon, a:focus > .icon.icon,
+  .icon.icon:hover, .icon.icon:focus {
+    stroke: var(--dark-blue);
+    fill: var(--dark-blue);
+  }
+
+  a:active > .icon.icon, .icon.icon:active,
+  a.active > .icon.icon, .icon.icon.active {
+
+    stroke: var(--light-blue);
+    fill: var(--light-blue);
+  }
+
 </style>

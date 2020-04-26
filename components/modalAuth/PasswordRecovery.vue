@@ -1,6 +1,6 @@
 <template>
   <ModalWrapper @close="$emit('close')">
-    <h3 slot="header">Восстановление пароля</h3>
+    <h1 class="title" slot="header">Восстановление пароля</h1>
     <p slot="body">БОди епта</p>
     <!--    <p slot="footer">Footer епта</p>-->
   </ModalWrapper>
