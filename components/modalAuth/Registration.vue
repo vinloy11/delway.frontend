@@ -8,7 +8,6 @@
     </div>
     <form @submit.prevent="submit" slot="body">
       <template v-if="!additionally">
-                {{  $v.userData.email }}
         <div :class="['field', 'login', validClass('login')]">
           <label for="login">Логин</label>
           <input @input="removeSpaces" placeholder="Leemiant" id="login" type="text"
@@ -21,7 +20,7 @@
           <span v-if="$v.userData.email.$error && !$v.userData.email.required">Поле не должно быть пустым</span>
           <span v-if="$v.userData.email.$error && !$v.userData.email.email">Введите корректный E-mail</span>
         </div>
-        <div class="field password">
+        <div :class="['field', 'password', validClass('password')]">
           <label for="password">Пароль</label>
           <input placeholder="Ваш пароль" id="password" type="password" v-model="$v.userData.password.$model">
           <span v-if="$v.userData.password.$error && !$v.userData.password.required">Поле не должно быть пустым</span>
@@ -30,12 +29,12 @@
         <button @click.prevent="continueReg" class="btn success big">Продолжить регистрацию</button>
       </template>
       <template v-else>
-        <div class="field name">
+        <div :class="['field', 'name', validClass('name')]">
           <label for="name">Имя</label>
           <input placeholder="Иван" id="name" type="text" v-model.trim="$v.userData.name.$model">
           <span v-if="$v.userData.name.$error && !$v.userData.name.required">Поле не должно быть пустым</span>
         </div>
-        <div class="field surname">
+        <div :class="['field', 'surname', validClass('surname')]">
           <label for="surname">Фамилия</label>
           <input placeholder="Иванов" id="surname" type="text" v-model.trim="$v.userData.surname.$model">
           <span v-if="$v.userData.surname.$error && !$v.userData.surname.required">Поле не должно быть пустым</span>
@@ -120,7 +119,6 @@
       },
 
       submit() {
-        // console.log('submit!')
         this.$v.userData.$touch();
         if (!this.$v.userData.login.$error
           && !this.$v.userData.email.$error
@@ -134,7 +132,6 @@
       },
 
       validClass(field) {
-        // console.log(this.$v[field].$invalid, this.$v[field].$error)
         if (this.$v.userData[field].$invalid && this.$v.userData[field].$error ) {
           return 'error'
         } else if(!this.$v.userData[field].$invalid && !this.$v.userData[field].$error) {

@@ -28,7 +28,98 @@
 }
 
 form {
+
+  .field {
+    position: relative;
+    margin-top: 16px;
+
+    label {
+      color: var(--gray);
+      position: relative;
+      &:after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        right: -14px;
+        top: 4px;
+      }
+    }
+
+    input {
+      display: block;
+      margin-top: 4px;
+      padding: 8px 16px 6px 16px;
+      box-sizing: border-box;
+      border: 1px solid transparent;
+      font-weight: 600;
+      color: var(--black);
+      width: 384px;
+      background: var(--input-background);
+      outline: none;
+
+      &::placeholder {
+        font-weight: 600;
+        color: var(--gray);
+      }
+
+      &:hover {
+        border-color: var(--hover-blue);
+      }
+
+      &:focus {
+        border-color: var(--focus-blue);
+      }
+    }
+
+    &.error {
+      label:after {
+        background-image: url("../../assets/images/icons/x-icon-error.svg?inline");
+        background-size: cover;
+      }
+
+      input {
+        border-bottom: 2px solid var(--error);
+        background-color: var(--error-input);
+
+        &:hover {
+          border-color: var(--hover-error);
+          border-bottom-color: var(--error);
+        }
+
+        &:focus {
+          border-color: var(--error);
+        }
+      }
+    }
+
+    &.success {
+      label:after {
+        width: 13px;
+        height: 9px;
+        right: -18px;
+        background-image: url("../../assets/images/icons/success-input.svg?inline");
+        background-size: cover;
+      }
+
+      input {
+        background-color: var(--success-input);
+        border-bottom: 2px solid var(--dark-blue);
+      }
+    }
+
+    span {
+      display: block;
+      text-align: right;
+      font-weight: normal;
+      font-size: 12px;
+      color: var(--error);
+      position: absolute;
+      width: 100%;
+    }
+  }
   .btn {
+    margin-top: 16px;
     width: 100%;
   }
 }
